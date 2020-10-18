@@ -1,0 +1,69 @@
+Daftar Lensa	
+	SINGGLE VISION
+	try FACET 
+		-Tambah 	ok
+		-edit 		ok
+		-hapus		ok
+	try Pewarnaan
+		-Tambah 	ok
+		-edit 		ok
+		-hapus		ok
+	try BIFOKAL
+		-tambah 	ok
+		-edit		ok
+		-hapus		ok
+		-cari 		ok  berdasarkan kode produk
+	try TYPE
+		-Tambah 	ok
+		-edit 		ok
+		-hapus		ok
+	 try KATEGORI
+		-Tambah 	ok
+		-edit 		ok
+		-hapus		ok
+Daftar Produk
+	try FRAME
+		-tambah 	ok
+		-edit		ok
+		-hapus		ok
+		-cari 		ok   berdsaarkan merk
+	try SOFTLENS
+		-tambah 	ok
+		-edit		ok
+		-hapus		ok
+		-cari 		ok   berdsaarkan merk
+	try CLEANER
+		-tambah 	ok
+		-edit		ok
+		-hapus		ok
+		-cari 		ok   berdsaarkan KODE PRODUK
+DAFTAR PENGGUNA
+	try KEPALA TOKO
+		-tambah 	ok
+		-login 		ok 		$password mirantin#.19061996(tglbulantahunFull);
+		-edit		ok
+		-hapus		ok
+		-cari 		ok   berdsaarkan Nama 
+	try KARYAWAN
+		-tambah 	ok
+		-login 		ok		$password karyawan#.19061996(tglbulantahunFull);
+		-edit		ok
+		-hapus		ok
+		-cari 		ok   berdsaarkan Nama 
+DASHBOARD
+	   try TAMBAH PESANAN
+			-input nama pemesan 	-ok
+			-input barang pesanan 	-ok
+				-edit barang pesanan  	- ok
+				-hapus barang pesanan 	-ok
+			-teirma uang muka		-ok
+			-print nota pembayaran 	-ok
+			-pelunasan pembayaran 	-ok
+		try TAMBAH TRANSAKSI
+			-input nama pemesan 	-ok
+			-cari barang pesanan 	-ok	berdasarkan kode produk masing masing , harus sama persis
+				-hapus barang pesanan 	-ok
+			-pembayaran 			-ok
+			-print nota pembayaran 	-ok
+			-pelunasan pembayaran 	-ok
+

@@ -1,0 +1,135 @@
+{{-- <form action="{{route('pesanan.store')}}" method="POST" id="storePesanan" enctype="multipart/form-data">
+    @csrf
+    <div class="modal fade" tabindex="-1" id="tambahPesanan">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header bg-success text-white">
+                    <h5 class="modal-title">
+                        Tambah Pesanan
+                    </h5>
+                </div>
+                <div class="modal-body">
+                    <label for="">Pesanan</label>
+                    <select  id="kolom" class="btn btn-sm">
+                        <option value="0" selected="">0</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                    </select>
+                    <small>Pilih berapa banyak kolom yang ingin di tampilkan</small>
+                    <hr>
+                    <div id="input1"></div>
+                    <div class="form-group">
+                        <label for="">Uang Muka</label>
+                        <div class="input-group">
+                            <span class="input-group-prepend p-1 border border">
+                                Rp
+                            </span>
+                            <input type="text" name="uang_muka" class="form-control harga" required="">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-sm">
+                                Tgl.Pesan
+                                <input type="text" name="tgl_pesan"  class="form-control tanggal" id="mulai" value="{{date('d m Y')}}" required="">
+                            </div>
+                            <div class="col-sm">
+                                Tgl.Selesai
+                    <input type="text" name="tgl_selesai"  class="form-control tanggal" id="selesai" value="{{date('d m Y', strtotime('+5 days'))}}" required="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-success btn-block btn-sm"><i class="fa fa-paper-plane mr-2"></i>Simpan Pesanan Baru</button>   
+                    <button class="btn btn-sm btn-secondary" data-dismiss="modal">Batal</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form> --}}
+<form action="{{route('pesanan.pembayaran',$pesan->kode_pesanan)}}" method="POST" id="storePembayaran" >
+    @csrf
+    {{method_field('PUT')}}
+    <div class="modal fade" tabindex="-1" id="pembayaran{{$pesan->kode_pesanan}}">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header bg-success text-white">
+                    <h5 class="modal-title">
+                        <i class="fa fa-money mr-2"></i>Pembayaran
+                    </h5>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-sm">
+                                    <label for="">Uang Muka</label>
+                                <div class="input-group">
+                                    <span class="input-group-prepend p-1 border border">
+                                        Rp
+                                    </span>
+                                    <input type="text" readonly="" name="uang_muka" class="form-control harga" value="{{$pesan->uang_muka}}" required="">
+                                </div>                              
+                            </div>
+                            <div class="col-sm">
+                                    <label for="">Sisa Pembayaran</label>
+                                <div class="input-group">
+                                    <span class="input-group-prepend p-1 border border" >
+                                        Rp
+                                    </span>
+                                    <input type="text" name="sisa_pembayaran" class="form-control harga" required="">
+                                </div>  
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="form-group">
+                            <label for="">Tgl.Pesan</label>
+                            <input type="text" name="tgl_pesan"  class="form-control " id="mulai" value="{{date('d F Y', strtotime($pesan->tgl_pesan)) }}" readonly="">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-success btn-block btn-sm"><i class="fa fa-play mr-2"></i>Pembayaran</button>   
+                    <button class="btn btn-sm btn-secondary" data-dismiss="modal">Batal</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+<script>
+$('#storePesanan').on('submit',function(){
+    $('#tambahPesanan').modal('hide');
+    $('#modalProsesUbah').modal('show');
+})
+$('.harga').mask("#.##0.000", {reverse: true})
+$('.tanggal').mask('00-00-0000');
+$('.tgl_selesai').mask('00/00/0000');
+$(document).ready(function(){
+    $('#kolom').change(function(){
+        var data=$(this).find(':selected').attr('value'); 
+        var input='';
+
+        for (var i = 0 ; i <= data-1; i++) {
+             input +='<div class="form-group">';
+             input +='<input type="text" id="'+i+'" name="pesanan[]" class="form-control">';
+             input +='</div>';
+             console.log(i);
+        }
+        $('#input1').html(input);
+    });
+})
+
+
+
+
+</script>
+
